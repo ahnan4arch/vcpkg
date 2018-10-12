@@ -34,6 +34,10 @@ if(EXISTS ${CURRENT_PACKAGES_DIR}/bin/geos-config)
     file(REMOVE ${CURRENT_PACKAGES_DIR}/debug/bin/geos-config)
 endif()
 
+if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
+    file(REMOVE_RECURSE ${CURRENT_PACKAGES_DIR}/bin ${CURRENT_PACKAGES_DIR}/debug/bin)
+endif()
+
 # Handle copyright
 configure_file(${SOURCE_PATH}/COPYING ${CURRENT_PACKAGES_DIR}/share/geos/copyright COPYONLY)
 
